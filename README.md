@@ -91,5 +91,3 @@ For any questions or support, please contact samikshaglv@gmail.com.
 5. **Additional Notes**: Important information regarding Redis and database configuration.
 6. **Assumptions**: Clarifies assumptions about the input data and environment setup.
 7. **Contact**: Contact information for further support.
-
-
