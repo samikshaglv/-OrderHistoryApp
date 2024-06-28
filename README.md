@@ -17,7 +17,7 @@ Ensure you have the following installed on your system:
 
 1. **Clone the Repository**
 
-   **```bash**
+   **bash**
    git clone https://github.com/yourusername/order_history_app.git
    cd order_history_app
 2. Install Dependencies
