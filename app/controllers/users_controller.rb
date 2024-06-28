@@ -1,16 +1,16 @@
 # app/controllers/users_controller.rb
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.page(params[:page]).per(10)
   end
 
   def download_orders
     user = User.find(params[:id])
     if user
       OrderCsvJob.perform_later(user.id)
-      redirect_to users_path, notice: 'CSV is being generated and will be available shortly.'
+      redirect_to users_path(page: params[:page]), notice: 'CSV is being generated and will be available shortly.'
     else
-      redirect_to users_path, alert: 'User not found.'
+      redirect_to users_path(page: params[:page]), alert: 'User not found.'
     end
   end
 

@@ -65,7 +65,7 @@ To generate a CSV file for a user's order history, click the "Generate CSV" butt
 Once the CSV is generated, a "Download CSV" link will appear. Click this link to download the CSV file.
 
 4. Project Structure
-**Models**: Defines the User and Order models with validations and associations.
+**Models**: Defines the User, Order, and Product models with validations and associations.
 **Controllers**: Handles the logic for displaying users and generating/downloading CSV files.
 **Jobs**: Contains the OrderCsvJob for generating CSV files in the background.
 **Views**: Contains the HTML and ERB files for rendering the user interface.

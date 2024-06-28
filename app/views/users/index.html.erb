@@ -1,25 +1,37 @@
 <!-- app/views/users/index.html.erb -->
-<h1>Users</h1>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Username</th>
-      <th>Email</th>
-      <th>Download Orders</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
+<div class="container">
+  <h1 class="my-4">Users</h1>
+
+  <table class="table table-striped">
+    <thead class="thead-dark">
       <tr>
-        <td><%= user.username %></td>
-        <td><%= user.email %></td>
-        <td><%= link_to 'Export CSV', download_orders_user_path(user.id), class: 'btn btn-primary'%></td>
-        <td><% if user.csv_download_path.present? %>
-			    <%= link_to 'Download CSV', download_csv_user_path(user.id), class: 'btn btn-primary'%>
-			  <% else %>
-			    <p>CSV is being generated...</p>
-			 <% end %></td>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Export Orders</th>
+        <th>Download CSV</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.username %></td>
+          <td><%= user.email %></td>
+          <td>
+            <%= link_to 'Export CSV', download_orders_user_path(user.id, page: params[:page]), class: 'btn btn-primary', data: { turbo: false } %>
+          </td>
+          <td>
+            <% if user.csv_download_path.present? %>
+              <%= link_to 'Download CSV', download_csv_user_path(user.id), class: 'btn btn-success', data: { turbo: false } %>
+            <% else %>
+              <p>File not available to download</p>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-center">
+    <%= paginate @users %>
+  </div>
+</div>

@@ -12,7 +12,7 @@ class OrderCsvJob < ApplicationJob
       File.write(file_path, orders_csv)
 
       # Update user with the file path for download
-      user.update(csv_download_path: "/tmp/#{user.username}_orders.csv")
+      user.update(csv_download_path: file_path)
     else
       Rails.logger.error "User not found with ID #{user_id}"
     end
